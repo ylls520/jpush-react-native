@@ -1,22 +1,74 @@
 # JPush-React-Native
 
 ## ChangeLog
+1. 安卓升级到3.8.6并集成厂商通道
+2. 苹果升级到3.5.2
 
-1. 从RN-JPush2.7.5开始，重新支持TypeScript
-2. 由于RN-JCore1.6.0存在编译问题，从RN-JCore1.7.0开始，还是需要在AndroidManifest.xml中添加配置代码，具体参考 配置-2.1 Android
+####安卓已集成厂商通道 华为 小米 OPPO VIVO 具体参照[官方教程](https://docs.jiguang.cn//jpush/client/Android/android_guide/)
+华为通道集成 
+在根级 build.gradle 中添加规则，以纳入 HMS 服务插件 和 华为 的 Maven 代码库
+```
+buildscript {
+  repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven {url 'http://developer.huawei.com/repo/'}
+  }
 
+  dependencies {
+     classpath 'com.huawei.agconnect:agcp:1.2.1.301'
+  }
+ }
+
+allprojects {
+      repositories {
+          google()
+          jcenter()
+          mavenCentral()
+          maven {url 'http://developer.huawei.com/repo/'}
+      }
+  }
+```
+在应用 module 的 build.gradle 文件底部添加 apply plugin 代码行，以启用 gradle 插件：
+```
+apply plugin: 'com.huawei.agconnect'
+```
+####以下需要在应用 module 的 gradle 中 defaultConfig 节点manifestPlaceholders中添加如下代码:
+#####小米通道集成
+```
+  XIAOMI_APPKEY : "MI-您的应用对应的小米的APPKEY", // 小米平台注册的appkey,注意不要将前缀去掉 MI-appkey
+  XIAOMI_APPID : "MI-您的应用对应的小米的APPID", // 小米平台注册的appid，注意不要将前缀去掉 MI-appid
+```
+#####OPPO通道集成
+```
+  OPPO_APPKEY : "OP-您的应用对应的OPPO的APPKEY", // OPPO平台注册的appkey
+  OPPO_APPID : "OP-您的应用对应的OPPO的APPID", // OPPO平台注册的appid
+  OPPO_APPSECRET: "OP-您的应用对应的OPPO的APPSECRET"//OPPO平台注册的appsecret
+```
+#####VIVO通道集成
+```
+  VIVO_APPKEY : "您的应用对应的VIVO的APPKEY", // VIVO平台注册的appkey
+  VIVO_APPID : "您的应用对应的VIVO的APPID", // VIVO平台注册的appid
+```
 
 ## 1. 安装
 
+```shell
+  npm install jpush-react-native@ylls520/jpush-react-native#refs/tags/3.0.0-JD --save
 ```
-npm install jpush-react-native --save
+  或
+```shell
+ yarn add jcore-react-native@ylls520/jpush-react-native#refs/tags/3.0.0-JD
 ```
-
-* 注意：如果项目里没有jcore-react-native，需要安装
-
-  ```
-  npm install jcore-react-native --save
-  ```
+  * 注意：项目需要使用指定jcore-react-native，需要安装
+```shell
+npm install jcore-react-native@ylls520/jcore-react-native#refs/tags/2.0.1-JD --save
+```
+  或
+```shell
+yarn add jcore-react-native@ylls520/jcore-react-native#refs/tags/2.0.1-JD
+```
 安装完成后连接原生库
 进入到根目录执行<br/>
 react-native link<br/>
