@@ -7,7 +7,7 @@
 安卓使用Google Play版本
 IOS使用noidfa版本
 
-####安卓已集成厂商通道 华为 小米 OPPO VIVO 具体参照[官方教程](https://docs.jiguang.cn//jpush/client/Android/android_guide/)
+#### 安卓已集成厂商通道 华为 小米 OPPO VIVO 具体参照[官方教程](https://docs.jiguang.cn//jpush/client/Android/android_guide/)
 华为通道集成 
 在根级 build.gradle 中添加规则，以纳入 HMS 服务插件 和 华为 的 Maven 代码库
 ```
