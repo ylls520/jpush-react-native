@@ -495,6 +495,10 @@ public class JPushModule extends ReactContextBaseJavaModule {
         callback.invoke(isEnabled);
     }
 
+    @ReactMethod
+    public void goToAppNotificationSettings() {
+        JPushInterface.goToAppNotificationSettings(reactContext);
+    }
 
     //*****************************应用前后台状态监听*****************************
     public static void registerActivityLifecycle(Application application) {

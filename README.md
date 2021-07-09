@@ -20,7 +20,7 @@ buildscript {
   }
 
   dependencies {
-     classpath 'com.huawei.agconnect:agcp:1.2.1.301'
+    classpath 'com.huawei.agconnect:agcp:1.4.2.300'
   }
  }
 
@@ -57,28 +57,31 @@ apply plugin: 'com.huawei.agconnect'
 
 ## 1. 安装
 
+* 注意：项目需要使用指定jcore-react-native，需要安装
 ```shell
-  npm install jpush-react-native@ylls520/jpush-react-native#refs/tags/3.0.0-JD --save
+npm install jcore-react-native@ylls520/jcore-react-native#refs/tags/2.1.1-JD --save
+或
+```
+```shell
+yarn add jcore-react-native@ylls520/jcore-react-native#refs/tags/2.1.1-JD
+```
+
+```shell
+npm install jpush-react-native@ylls520/jpush-react-native#refs/tags/3.1.0-JD --save
 ```
   或
 ```shell
- yarn add jcore-react-native@ylls520/jpush-react-native#refs/tags/3.0.0-JD
-```
-  * 注意：项目需要使用指定jcore-react-native，需要安装
-```shell
-npm install jcore-react-native@ylls520/jcore-react-native#refs/tags/2.0.1-JD --save
-```
-  或
-```shell
-yarn add jcore-react-native@ylls520/jcore-react-native#refs/tags/2.0.1-JD
+yarn add jpush-react-native@ylls520/jpush-react-native#refs/tags/3.1.0-JD-JD
 ```
 安装完成后连接原生库
 进入到根目录执行<br/>
-react-native link<br/>
-或<br/>
-react-native link jpush-react-native<br/>
+```shell
+react-native link
+```
+或
+react-native link jpush-react-native
 react-native link jcore-react-native
-
+```
 ## 2. 配置
 
 ### 2.1 Android
